@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Hero from "@/components/Hero";
 import Countdown from "@/components/Countdown";
+import DonationSection from "@/components/DonationSection";
 import { useLang, text } from "@/lib/i18n";
 
 const HERO_IMG =
@@ -210,6 +211,9 @@ export default function Home() {
           ))}
         </div>
       </section>
+
+      {/* Support / donation */}
+      <DonationSection />
     </>
   );
 }

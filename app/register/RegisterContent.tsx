@@ -30,9 +30,11 @@ export default function RegisterPage() {
   const t = (bi: Bi) => text(bi, lang);
 
   const days = [
+    { en: "All Days", ko: "전체" },
     { en: "Day 1", ko: "1일차" },
     { en: "Day 2", ko: "2일차" },
     { en: "Day 3", ko: "3일차" },
+    { en: "Day 4", ko: "4일차" },
   ];
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {

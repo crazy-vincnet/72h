@@ -53,7 +53,7 @@ export async function POST(request: Request) {
       ? Math.min(Math.floor(participantsNum), 1000)
       : 1;
   const days = Array.isArray(data.days)
-    ? data.days.filter((d): d is string => typeof d === "string").slice(0, 3)
+    ? data.days.filter((d): d is string => typeof d === "string").slice(0, 5)
     : [];
 
   const { error } = await insforge.database.from("registrations").insert([

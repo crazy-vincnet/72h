@@ -34,3 +34,19 @@ export const EVENT_ADDRESS: Bi = {
   en: "San 14-3, Waheul-ri, Jocheon-eup, Jeju-si, Jeju-do, South Korea",
   ko: "제주특별자치도 제주시 조천읍 와흘리 산14-3",
 };
+
+/**
+ * Donation / support info shown in the home "Support" section.
+ * PLACEHOLDERS — replace `bank`, `account`, and `holder` with the real
+ * account details. Set `confirmed` to true once they are filled in; while
+ * false the section shows a "details coming soon" note instead of the account.
+ */
+export const DONATION_CONFIRMED = false;
+
+export const DONATION = {
+  bank: { en: "Bank: TBA", ko: "은행: 추후 공지" },
+  account: "000-0000-0000-00",
+  holder: { en: "Account holder: TBA", ko: "예금주: 추후 공지" },
+  /** Optional contact for donation inquiries (email or phone). Empty = hidden. */
+  inquiry: "",
+};
