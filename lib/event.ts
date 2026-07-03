@@ -41,12 +41,12 @@ export const EVENT_ADDRESS: Bi = {
  * account details. Set `confirmed` to true once they are filled in; while
  * false the section shows a "details coming soon" note instead of the account.
  */
-export const DONATION_CONFIRMED = false;
+export const DONATION_CONFIRMED = true;
 
 export const DONATION = {
-  bank: { en: "Bank: TBA", ko: "은행: 추후 공지" },
-  account: "000-0000-0000-00",
-  holder: { en: "Account holder: TBA", ko: "예금주: 추후 공지" },
+  bank: { en: "Hana Bank", ko: "하나은행" },
+  account: "924-910171-47707",
+  holder: { en: "Kim Seong-min", ko: "김성민" },
   /** Optional contact for donation inquiries (email or phone). Empty = hidden. */
   inquiry: "",
 };
