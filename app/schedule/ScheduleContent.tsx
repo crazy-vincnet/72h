@@ -3,10 +3,9 @@
 import Link from "next/link";
 import { useState } from "react";
 import Hero from "@/components/Hero";
-import { useLang, text, type Bi } from "@/lib/i18n";
+import { useLang, text, type Bi, type Lang } from "@/lib/i18n";
 
-const HERO_IMG =
-  "/images/jeju-dawn.png";
+type Track = "worship" | "special";
 
 type Session = {
   time: string;
@@ -15,8 +14,11 @@ type Session = {
   title: Bi;
   speaker: Bi;
   chips: Bi[];
+  track: Track;
   live?: boolean;
 };
+
+const HERO_IMG = "/images/jeju-dawn.png";
 
 const DAYS: { label: Bi; date: Bi; sessions: Session[] }[] = [
   {
@@ -33,6 +35,7 @@ const DAYS: { label: Bi; date: Bi; sessions: Session[] }[] = [
           { en: "Repentance", ko: "회개" },
           { en: "Renewal", ko: "갱신" },
         ],
+        track: "worship",
       },
       {
         time: "02:00 PM",
@@ -41,6 +44,7 @@ const DAYS: { label: Bi; date: Bi; sessions: Session[] }[] = [
         title: { en: "Praying for the Nations", ko: "열방을 위한 기도" },
         speaker: { en: "Speaker: TBA", ko: "강사: 추후 공지" },
         chips: [{ en: "Global Church", ko: "세계 교회" }],
+        track: "special",
         live: true,
       },
       {
@@ -50,6 +54,7 @@ const DAYS: { label: Bi; date: Bi; sessions: Session[] }[] = [
         title: { en: "Fire Night", ko: "불의 밤" },
         speaker: { en: "Speaker: TBA", ko: "강사: 추후 공지" },
         chips: [{ en: "Worship", ko: "예배" }],
+        track: "worship",
       },
     ],
   },
@@ -64,6 +69,7 @@ const DAYS: { label: Bi; date: Bi; sessions: Session[] }[] = [
         title: { en: "Seeking His Face", ko: "그분의 얼굴을 구하며" },
         speaker: { en: "Speaker: TBA", ko: "강사: 추후 공지" },
         chips: [{ en: "Intercession", ko: "중보" }],
+        track: "worship",
       },
       {
         time: "02:00 PM",
@@ -75,6 +81,7 @@ const DAYS: { label: Bi; date: Bi; sessions: Session[] }[] = [
           { en: "Reunification", ko: "통일" },
           { en: "Healing", ko: "치유" },
         ],
+        track: "special",
       },
     ],
   },
@@ -89,6 +96,7 @@ const DAYS: { label: Bi; date: Bi; sessions: Session[] }[] = [
         title: { en: "New Beginnings", ko: "새로운 시작" },
         speaker: { en: "Speaker: TBA", ko: "강사: 추후 공지" },
         chips: [{ en: "Hope", ko: "소망" }],
+        track: "worship",
       },
       {
         time: "08:00 PM",
@@ -100,6 +108,7 @@ const DAYS: { label: Bi; date: Bi; sessions: Session[] }[] = [
           { en: "Perseverance", ko: "인내" },
           { en: "Watchfulness", ko: "깨어있음" },
         ],
+        track: "special",
       },
     ],
   },
@@ -114,6 +123,7 @@ const DAYS: { label: Bi; date: Bi; sessions: Session[] }[] = [
         title: { en: "Sending Light", ko: "빛을 보내며" },
         speaker: { en: "Speaker: TBA", ko: "강사: 추후 공지" },
         chips: [{ en: "Revival", ko: "부흥" }],
+        track: "worship",
       },
       {
         time: "08:00 AM",
@@ -125,14 +135,43 @@ const DAYS: { label: Bi; date: Bi; sessions: Session[] }[] = [
           { en: "Commissioning", ko: "파송" },
           { en: "Thanksgiving", ko: "감사" },
         ],
+        track: "special",
       },
     ],
   },
 ];
 
+// --- time helpers ---
+const HOUR_H = 56; // px per hour on the ruler
+
+function startHour(time: string): number {
+  const m = time.match(/(\d+):(\d+)\s*(AM|PM)/i);
+  if (!m) return 0;
+  let h = Number(m[1]) % 12;
+  if (/pm/i.test(m[3])) h += 12;
+  return h + Number(m[2]) / 60;
+}
+
+function durationHours(d: Bi): number {
+  const m = d.en.match(/(\d+)\s*Hour/i);
+  return m ? Number(m[1]) : 1;
+}
+
 export default function SchedulePage() {
   const { lang } = useLang();
   const [day, setDay] = useState(0);
+
+  const sessions = DAYS[day].sessions;
+  const worship = sessions.filter((s) => s.track === "worship");
+  const special = sessions.filter((s) => s.track === "special");
+
+  // The relay runs Aug 12 10:00 → Aug 15 10:00. So Day 1 starts at 10:00 and
+  // the final day ends at 10:00; the days in between show the full 24 hours.
+  const isFirst = day === 0;
+  const isLast = day === DAYS.length - 1;
+  const rangeStart = isFirst ? 10 : 0;
+  const rangeEnd = isLast ? 10 : 24;
+  const rulerH = (rangeEnd - rangeStart) * HOUR_H;
 
   return (
     <>
@@ -143,8 +182,8 @@ export default function SchedulePage() {
         title={text({ en: "72-Hour Prayer Relay", ko: "72시간 연속 기도 릴레이" }, lang)}
         subtitle={text(
           {
-            en: "Join us in a continuous stream of worship and intercession. Select a session below to participate in this sacred journey.",
-            ko: "끊임없는 예배와 중보기도에 동참하세요. 아래에서 세션을 선택하여 이 거룩한 여정에 참여하세요.",
+            en: "A continuous 24-hour stream each day — worship on one side, special gatherings on the other.",
+            ko: "매일 24시간 이어지는 흐름 — 한쪽은 예배, 다른 한쪽은 특별 모임으로 진행됩니다.",
           },
           lang,
         )}
@@ -171,108 +210,202 @@ export default function SchedulePage() {
           ))}
         </div>
 
-        {/* Timeline */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-gutter relative">
-          <div className="hidden md:block absolute left-[8.33%] top-0 bottom-0 w-px bg-outline-variant/30" />
+        {/* Column headers */}
+        <div className="hidden lg:grid grid-cols-[1fr_5.5rem_1fr] gap-4 mb-4">
+          <h2 className="text-right font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">
+            {text({ en: "Worship Schedule", ko: "전체 예배 스케줄" }, lang)}
+          </h2>
+          <div className="text-center font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">
+            24h
+          </div>
+          <h2 className="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">
+            {text({ en: "Special Schedule", ko: "특별 스케줄" }, lang)}
+          </h2>
+        </div>
 
-          {DAYS[day].sessions.map((s, i) => (
-            <div
-              key={i}
-              className="md:col-span-12 grid grid-cols-1 md:grid-cols-12 gap-gutter relative z-10 group mt-8 first:mt-0"
-            >
-              <div className="md:col-span-1 flex md:justify-center pt-4">
+        {/* Desktop: worship | 24h ruler | special */}
+        <div
+          className="hidden lg:grid grid-cols-[1fr_5.5rem_1fr] gap-4 relative"
+          style={{ height: rulerH }}
+        >
+          {/* Left — worship */}
+          <div className="relative">
+            {worship.map((s, i) => (
+              <SessionBlock key={i} s={s} side="left" lang={lang} rangeStart={rangeStart} />
+            ))}
+          </div>
+
+          {/* Center — 24h ruler (clipped to the day's active window) */}
+          <div className="relative">
+            <div className="absolute left-1/2 top-0 bottom-0 w-px bg-outline-variant/40 -translate-x-1/2" />
+            {Array.from({ length: rangeEnd - rangeStart + 1 }, (_, i) => {
+              const hour = rangeStart + i;
+              return (
                 <div
-                  className={
-                    "w-3 h-3 rounded-full bg-primary mt-1.5 md:mx-auto " +
-                    (s.live ? "animate-pulse ring-4 ring-primary/20" : "ring-4 ring-primary-fixed")
-                  }
-                />
-              </div>
-              <div className="md:col-span-2 pt-3">
-                <div
-                  className={
-                    "font-headline-md text-lg flex items-center gap-2 " +
-                    (s.live ? "text-primary" : "text-on-surface")
-                  }
+                  key={hour}
+                  className="absolute left-0 right-0 flex items-center justify-center"
+                  style={{ top: i * HOUR_H }}
                 >
-                  {s.time}
-                  {s.live && (
-                    <span className="px-2 py-0.5 rounded-full bg-primary-container text-on-primary-container text-[10px] font-bold uppercase tracking-wider">
-                      Live
+                  <span className="absolute left-0 right-0 border-t border-outline-variant/20" />
+                  {hour % 2 === 0 && (
+                    <span className="relative bg-background px-1 font-label-sm text-[11px] text-on-surface-variant tabular-nums">
+                      {String(hour % 24).padStart(2, "0")}:00
                     </span>
                   )}
                 </div>
-                <div className="font-label-sm text-on-surface-variant mt-1">
-                  {text(s.duration, lang)}
-                </div>
-              </div>
-              <div className="md:col-span-9">
-                <div
-                  className={
-                    s.live
-                      ? "bg-surface-container-lowest p-6 rounded-xl border-t-2 border-primary card-shadow transition-transform hover:-translate-y-1 relative overflow-hidden"
-                      : "glass-panel p-6 rounded-xl transition-transform hover:-translate-y-1"
-                  }
-                >
-                  {s.live && (
-                    <div className="absolute right-0 top-0 opacity-5 w-32 h-32 transform translate-x-8 -translate-y-8">
-                      <span className="material-symbols-outlined" style={{ fontSize: 128 }}>
-                        local_fire_department
-                      </span>
-                    </div>
-                  )}
-                  <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 relative z-10">
-                    <div>
-                      <span
-                        className={
-                          "inline-block px-3 py-1 rounded-full font-label-sm text-xs mb-3 " +
-                          (s.live
-                            ? "bg-primary-fixed/30 text-primary"
-                            : "bg-surface-container-highest text-on-surface-variant")
-                        }
-                      >
-                        {text(s.tag, lang)}
-                      </span>
-                      <h3 className="font-headline-md text-on-surface mb-2">
-                        {text(s.title, lang)}
-                      </h3>
-                      <p className="font-body-md text-on-surface-variant mb-4 flex items-center gap-2">
-                        <span className="material-symbols-outlined text-secondary text-sm">
-                          person
-                        </span>
-                        {text(s.speaker, lang)}
-                      </p>
-                      <div className="flex flex-wrap gap-2">
-                        {s.chips.map((c, ci) => (
-                          <span
-                            key={ci}
-                            className="px-2 py-1 rounded bg-secondary-container/30 text-on-secondary-container text-xs font-label-sm"
-                          >
-                            {text(c, lang)}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                    <Link
-                      href="/register"
-                      className={
-                        "w-full md:w-auto px-6 py-3 rounded-lg font-label-sm text-label-sm transition-colors text-center " +
-                        (s.live
-                          ? "bg-primary text-on-primary hover:bg-primary-container shadow-sm"
-                          : "border-2 border-secondary text-secondary hover:bg-secondary hover:text-on-secondary")
-                      }
-                    >
-                      {s.live
-                        ? text({ en: "Join Live", ko: "실시간 참여" }, lang)
-                        : text({ en: "Join Slot", ko: "참여하기" }, lang)}
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            </div>
-          ))}
+              );
+            })}
+          </div>
+
+          {/* Right — special */}
+          <div className="relative">
+            {special.map((s, i) => (
+              <SessionBlock key={i} s={s} side="right" lang={lang} rangeStart={rangeStart} />
+            ))}
+          </div>
+        </div>
+
+        {/* Mobile: stacked lists */}
+        <div className="lg:hidden space-y-stack-md">
+          <MobileTrack
+            title={text({ en: "Worship Schedule", ko: "전체 예배 스케줄" }, lang)}
+            items={worship}
+            lang={lang}
+          />
+          <MobileTrack
+            title={text({ en: "Special Schedule", ko: "특별 스케줄" }, lang)}
+            items={special}
+            lang={lang}
+          />
         </div>
       </section>
     </>
+  );
+}
+
+/** A time-positioned session card on the desktop 24h timeline. */
+function SessionBlock({
+  s,
+  side,
+  lang,
+  rangeStart,
+}: {
+  s: Session;
+  side: "left" | "right";
+  lang: Lang;
+  rangeStart: number;
+}) {
+  const top = (startHour(s.time) - rangeStart) * HOUR_H;
+  const height = Math.max(durationHours(s.duration) * HOUR_H - 8, 96);
+  return (
+    <Link
+      href="/register"
+      style={{ top, height }}
+      className={
+        "absolute w-[94%] p-4 rounded-xl overflow-hidden transition-transform hover:-translate-y-0.5 " +
+        (side === "left" ? "right-0" : "left-0") +
+        " " +
+        (s.live
+          ? "bg-surface-container-lowest border-t-2 border-primary card-shadow"
+          : "glass-panel")
+      }
+    >
+      <div className="flex items-center gap-2 mb-1">
+        <span
+          className={
+            "font-headline-md text-base " +
+            (s.live ? "text-primary" : "text-on-surface")
+          }
+        >
+          {s.time}
+        </span>
+        <span className="font-label-sm text-label-sm text-on-surface-variant">
+          {text(s.duration, lang)}
+        </span>
+        {s.live && (
+          <span className="px-2 py-0.5 rounded-full bg-primary-container text-on-primary-container text-[10px] font-bold uppercase tracking-wider">
+            Live
+          </span>
+        )}
+      </div>
+      <span
+        className={
+          "inline-block px-2.5 py-0.5 rounded-full font-label-sm text-[11px] mb-1.5 " +
+          (s.live
+            ? "bg-primary-fixed/30 text-primary"
+            : "bg-surface-container-highest text-on-surface-variant")
+        }
+      >
+        {text(s.tag, lang)}
+      </span>
+      <h3 className="font-body-lg text-body-lg font-semibold text-on-surface leading-snug">
+        {text(s.title, lang)}
+      </h3>
+    </Link>
+  );
+}
+
+/** Simple stacked card list for small screens. */
+function MobileTrack({
+  title,
+  items,
+  lang,
+}: {
+  title: string;
+  items: Session[];
+  lang: Lang;
+}) {
+  return (
+    <div>
+      <h2 className="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant mb-4">
+        {title}
+      </h2>
+      <div className="space-y-3">
+        {items.map((s, i) => (
+          <Link
+            key={i}
+            href="/register"
+            className={
+              "block p-5 rounded-xl " +
+              (s.live
+                ? "bg-surface-container-lowest border-t-2 border-primary card-shadow"
+                : "glass-panel")
+            }
+          >
+            <div className="flex items-center gap-2 mb-1">
+              <span
+                className={
+                  "font-headline-md text-lg " +
+                  (s.live ? "text-primary" : "text-on-surface")
+                }
+              >
+                {s.time}
+              </span>
+              <span className="font-label-sm text-label-sm text-on-surface-variant">
+                {text(s.duration, lang)}
+              </span>
+              {s.live && (
+                <span className="px-2 py-0.5 rounded-full bg-primary-container text-on-primary-container text-[10px] font-bold uppercase tracking-wider">
+                  Live
+                </span>
+              )}
+            </div>
+            <span
+              className={
+                "inline-block px-2.5 py-0.5 rounded-full font-label-sm text-[11px] mb-1.5 " +
+                (s.live
+                  ? "bg-primary-fixed/30 text-primary"
+                  : "bg-surface-container-highest text-on-surface-variant")
+              }
+            >
+              {text(s.tag, lang)}
+            </span>
+            <h3 className="font-body-lg text-body-lg font-semibold text-on-surface">
+              {text(s.title, lang)}
+            </h3>
+          </Link>
+        ))}
+      </div>
+    </div>
   );
 }
