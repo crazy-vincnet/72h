@@ -1,26 +1,156 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/*
+  Design tokens for the 72 Hours Jeju Prayer Project (Flame Worship).
+  Translated from the original Tailwind v3 mockup config into Tailwind v4 @theme.
+*/
+@theme {
+  /* ---- Color palette (Material-style tonal system) ---- */
+  --color-primary: #b02f00;
+  --color-primary-container: #ff5722;
+  --color-primary-fixed: #ffdbd1;
+  --color-primary-fixed-dim: #ffb5a0;
+  --color-on-primary: #ffffff;
+  --color-on-primary-container: #541200;
+  --color-on-primary-fixed: #3b0900;
+  --color-on-primary-fixed-variant: #862200;
+  --color-inverse-primary: #ffb5a0;
+  --color-surface-tint: #b02f00;
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  --color-secondary: #006a6a;
+  --color-secondary-container: #90efef;
+  --color-secondary-fixed: #93f2f2;
+  --color-secondary-fixed-dim: #76d6d5;
+  --color-on-secondary: #ffffff;
+  --color-on-secondary-container: #006e6e;
+  --color-on-secondary-fixed: #002020;
+  --color-on-secondary-fixed-variant: #004f4f;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-tertiary: #735c00;
+  --color-tertiary-container: #cca72f;
+  --color-tertiary-fixed: #ffe088;
+  --color-tertiary-fixed-dim: #e9c349;
+  --color-on-tertiary: #ffffff;
+  --color-on-tertiary-container: #4e3d00;
+  --color-on-tertiary-fixed: #241a00;
+  --color-on-tertiary-fixed-variant: #574500;
+
+  --color-error: #ba1a1a;
+  --color-error-container: #ffdad6;
+  --color-on-error: #ffffff;
+  --color-on-error-container: #93000a;
+
+  --color-background: #f8f9fa;
+  --color-on-background: #191c1d;
+  --color-surface: #f8f9fa;
+  --color-surface-bright: #f8f9fa;
+  --color-surface-dim: #d9dadb;
+  --color-surface-variant: #e1e3e4;
+  --color-surface-tint: #b02f00;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-container-low: #f3f4f5;
+  --color-surface-container: #edeeef;
+  --color-surface-container-high: #e7e8e9;
+  --color-surface-container-highest: #e1e3e4;
+  --color-on-surface: #191c1d;
+  --color-on-surface-variant: #5b4039;
+  --color-inverse-surface: #2e3132;
+  --color-inverse-on-surface: #f0f1f2;
+
+  --color-outline: #907067;
+  --color-outline-variant: #e4beb4;
+
+  /* ---- Spacing scale (extends default; px-stack-lg, gap-gutter, etc.) ---- */
+  --spacing-base: 8px;
+  --spacing-stack-sm: 12px;
+  --spacing-stack-md: 32px;
+  --spacing-stack-lg: 64px;
+  --spacing-gutter: 24px;
+  --spacing-margin-mobile: 16px;
+  --spacing-margin-desktop: 40px;
+
+  /* ---- Container width (max-w-container-max) ---- */
+  --container-container-max: 1200px;
+
+  /* ---- Font families (wired to next/font CSS variables) ---- */
+  --font-headline-xl: var(--font-be-vietnam), "Be Vietnam Pro", sans-serif;
+  --font-headline-xl-mobile: var(--font-be-vietnam), "Be Vietnam Pro", sans-serif;
+  --font-headline-md: var(--font-be-vietnam), "Be Vietnam Pro", sans-serif;
+  --font-body-lg: var(--font-jakarta), "Plus Jakarta Sans", sans-serif;
+  --font-body-md: var(--font-jakarta), "Plus Jakarta Sans", sans-serif;
+  --font-label-sm: var(--font-geist), "Geist", sans-serif;
+
+  /* ---- Type scale ---- */
+  --text-headline-xl: 48px;
+  --text-headline-xl--line-height: 1.2;
+  --text-headline-xl--letter-spacing: -0.02em;
+  --text-headline-xl--font-weight: 700;
+
+  --text-headline-xl-mobile: 32px;
+  --text-headline-xl-mobile--line-height: 1.2;
+  --text-headline-xl-mobile--font-weight: 700;
+
+  --text-headline-md: 24px;
+  --text-headline-md--line-height: 1.4;
+  --text-headline-md--font-weight: 600;
+
+  --text-body-lg: 18px;
+  --text-body-lg--line-height: 1.6;
+  --text-body-lg--font-weight: 400;
+
+  --text-body-md: 16px;
+  --text-body-md--line-height: 1.6;
+  --text-body-md--font-weight: 400;
+
+  --text-label-sm: 13px;
+  --text-label-sm--line-height: 1;
+  --text-label-sm--letter-spacing: 0.05em;
+  --text-label-sm--font-weight: 500;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-background);
+  color: var(--color-on-background);
+  font-family: var(--font-body-md);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ---- Reusable effects from the mockups ---- */
+.backdrop-blur-xl {
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+}
+
+.text-glow {
+  text-shadow: 0 0 20px rgba(176, 47, 0, 0.3);
+}
+
+.hero-gradient {
+  background: linear-gradient(
+    to bottom,
+    rgba(248, 249, 250, 0) 0%,
+    rgba(248, 249, 250, 1) 100%
+  );
+}
+
+.glass-panel {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(228, 190, 180, 0.2);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+}
+
+.card-shadow {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+}
+
+/* ---- Material Symbols ---- */
+.material-symbols-outlined {
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+  user-select: none;
+}
+
+.material-symbols-outlined.filled {
+  font-variation-settings: "FILL" 1, "wght" 400, "GRAD" 0, "opsz" 24;
 }
