@@ -24,9 +24,30 @@ const geist = Geist({
 });
 
 export const metadata: Metadata = {
-  title: "제주 72시간 기도 | Flame Worship",
+  metadataBase: new URL("https://7zh8h5k3.insforge.site"),
+  title: {
+    default: "제주 72시간 기도 | Flame Worship",
+    template: "%s | Flame Worship",
+  },
   description:
     "북한을 위해 중보하는 거룩한 모임 — 제주에서 72시간 연속 예배와 기도. 72 Hours of Prayer in Jeju.",
+  openGraph: {
+    title: "제주 72시간 기도 | Flame Worship",
+    description:
+      "북한을 위해 중보하는 거룩한 모임 — 제주에서 72시간 연속 예배와 기도.",
+    url: "/",
+    siteName: "Flame Worship",
+    images: [{ url: "/images/jeju-dawn.png", alt: "Jeju Island at dawn" }],
+    locale: "ko_KR",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "제주 72시간 기도 | Flame Worship",
+    description:
+      "북한을 위해 중보하는 거룩한 모임 — 제주에서 72시간 연속 예배와 기도.",
+    images: ["/images/jeju-dawn.png"],
+  },
 };
 
 export default function RootLayout({

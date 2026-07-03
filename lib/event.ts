@@ -4,9 +4,14 @@ import type { Bi } from "@/lib/i18n";
  * Event details. These are PLACEHOLDERS (TBA) — update them once the
  * date, venue, and speakers are confirmed.
  *
- * `EVENT_START` drives the live countdown on the home page. It is set to a
- * placeholder date in the future; replace it with the real start time.
+ * TO GO LIVE WITH THE COUNTDOWN:
+ *   1. Set EVENT_START to the real start time.
+ *   2. Flip EVENT_DATE_CONFIRMED to true.
+ * While EVENT_DATE_CONFIRMED is false, the home page shows a "date to be
+ * announced" panel instead of a countdown ticking toward a fake date.
  */
+export const EVENT_DATE_CONFIRMED = false;
+
 export const EVENT_START = new Date("2026-10-12T06:00:00+09:00");
 
 export const EVENT_INFO: {
