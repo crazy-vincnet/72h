@@ -1,36 +1,94 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Flame Worship — 72 Hours Jeju Prayer Project
+
+북한의 회복을 위한 제주 72시간 연속 기도 행사 웹사이트.
+A bilingual (Korean-first, English toggle) event site for the 72 Hours of Prayer
+in Jeju, built with Next.js and an InsForge backend.
+
+🔗 **Live:** https://7zh8h5k3.insforge.site
+
+---
+
+## Tech Stack
+
+- **Next.js 16** (App Router, Turbopack) + **React 19** + TypeScript
+- **Tailwind CSS v4** — design tokens in `app/globals.css` (`@theme`)
+- **InsForge** — database, registration storage, email
+- Fonts via `next/font`: Be Vietnam Pro, Plus Jakarta Sans, Geist
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev        # http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Environment variables
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Create `.env.local` (see `.env.example`):
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+INSFORGE_URL=https://<appkey>.<region>.insforge.app
+INSFORGE_ANON_KEY=anon_xxx          # npx @insforge/cli secrets get ANON_KEY
+ORGANIZER_EMAIL=you@example.com     # optional — new-registration notifications
+```
 
-## Learn More
+These are **server-only** (used by `app/api/register`). Never commit `.env*`.
 
-To learn more about Next.js, take a look at the following resources:
+## Project Structure
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+app/
+  layout.tsx            Root layout: fonts, metadata (OG/Twitter), nav, footer
+  page.tsx              Server wrappers export per-page metadata; render *Content
+  HomeContent.tsx       Home (hero, countdown, vision bento, quick links)
+  schedule/             일정 — day selector + session timeline
+  vision/               비전 — core values, mission
+  prayer-guide/         기도 가이드 — daily themes, intercession points
+  register/             등록 — form (client) + metadata wrapper
+  api/register/route.ts POST → validates, persists to InsForge, sends emails
+  icon.svg              Flame favicon
+  robots.ts, sitemap.ts SEO
+components/              TopNav, Footer, Hero, Countdown
+lib/
+  i18n.tsx              Language context (KO default) + text() helper
+  event.ts              Event date/venue — PLACEHOLDERS, edit here
+  insforge.ts           Server InsForge client (anon key)
+  email.ts              Best-effort confirmation/notification emails
+  nav.ts                Nav items
+migrations/             InsForge SQL migrations
+docs/ROADMAP.md         Analysis & prioritized next steps
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Editing Content
 
-## Deploy on Vercel
+- **Event date / countdown** — `lib/event.ts`. Set `EVENT_START` and flip
+  `EVENT_DATE_CONFIRMED` to `true` to turn the "dates TBA" panel into a live countdown.
+- **Schedule / speakers** — `app/schedule/ScheduleContent.tsx` (`DAYS`).
+- **Images** — `public/images/`. Swap in real photos (keep the same filenames or
+  update the references at the top of each `*Content.tsx`).
+- **Text** — bilingual strings live inline as `{ en, ko }`; the active language is
+  chosen by `text(value, lang)`.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Backend (InsForge)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The registration table and its access rules live in `migrations/`.
+
+```bash
+npx @insforge/cli db migrations up --all     # apply migrations
+npx @insforge/cli db query "SELECT * FROM registrations ORDER BY created_at DESC"
+```
+
+Submissions are **insert-only** for the public: anyone can register, but no one can
+read/edit them through the API — only an admin (dashboard/CLI) can view them.
+
+## Build & Deploy
+
+```bash
+npm run build                                # verify locally first
+npx @insforge/cli deployments deploy .       # deploy to InsForge hosting
+```
+
+## Next Steps
+
+See [`docs/ROADMAP.md`](docs/ROADMAP.md) for the prioritized backlog (remaining
+content, admin view, custom domain, analytics, etc.).

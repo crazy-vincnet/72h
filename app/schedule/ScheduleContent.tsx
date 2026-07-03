@@ -112,18 +112,10 @@ export default function SchedulePage() {
   return (
     <>
       <Hero
-        badge={text({ en: "Schedule / 일정", ko: "일정 / Schedule" }, lang)}
+        badge={text({ en: "Schedule", ko: "일정" }, lang)}
         image={HERO_IMG}
         alt="An expansive, bright view of Jeju Island at dawn with calm ocean waters and open skies."
-        title={
-          <>
-            {text({ en: "72-Hour Prayer Relay", ko: "72시간 연속 기도 릴레이" }, lang)}
-            <br />
-            <span className="text-primary font-headline-md block mt-2 text-2xl md:text-3xl">
-              {text({ en: "72시간 연속 기도 릴레이", ko: "72-Hour Prayer Relay" }, lang)}
-            </span>
-          </>
-        }
+        title={text({ en: "72-Hour Prayer Relay", ko: "72시간 연속 기도 릴레이" }, lang)}
         subtitle={text(
           {
             en: "Join us in a continuous stream of worship and intercession. Select a session below to participate in this sacred journey.",

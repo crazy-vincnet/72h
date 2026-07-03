@@ -43,43 +43,24 @@ export default function VisionPage() {
   return (
     <>
       <Hero
-        badge={text({ en: "Vision / 비전", ko: "비전 / Vision" }, lang)}
+        badge={text({ en: "Vision", ko: "비전" }, lang)}
         image={HERO_IMG}
         alt="A peaceful landscape of Jeju Island at sunrise, gentle mists over volcanic hills lit by a warm golden sunrise."
-        title={
-          <>
-            {text({ en: "Vision", ko: "비전" }, lang)}{" "}
-            <span className="text-primary opacity-50">/</span>{" "}
-            {text({ en: "비전", ko: "Vision" }, lang)}
-          </>
-        }
-        subtitle={
-          <>
-            {text(
-              {
-                en: "One Flame, One Heart for the Restoration of the North.",
-                ko: "북한의 회복을 위한 하나의 불꽃, 하나의 마음.",
-              },
-              lang,
-            )}
-            <span className="block mt-2 opacity-80 text-sm">
-              {text(
-                {
-                  en: "북한의 회복을 위한 하나의 불꽃, 하나의 마음.",
-                  ko: "One Flame, One Heart for the Restoration of the North.",
-                },
-                lang,
-              )}
-            </span>
-          </>
-        }
+        title={text({ en: "Vision", ko: "비전" }, lang)}
+        subtitle={text(
+          {
+            en: "One Flame, One Heart for the Restoration of the North.",
+            ko: "북한의 회복을 위한 하나의 불꽃, 하나의 마음.",
+          },
+          lang,
+        )}
       />
 
       {/* Core values */}
       <section className="py-stack-lg px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
         <div className="text-center mb-stack-lg">
           <h2 className="font-headline-md text-headline-md text-on-surface mb-stack-sm">
-            {text({ en: "Core Values / 핵심 가치", ko: "핵심 가치 / Core Values" }, lang)}
+            {text({ en: "Core Values", ko: "핵심 가치" }, lang)}
           </h2>
           <p className="font-body-md text-body-md text-on-surface-variant max-w-xl mx-auto">
             {text(
@@ -100,12 +81,9 @@ export default function VisionPage() {
               <div className="w-16 h-16 rounded-full bg-primary-fixed/30 flex items-center justify-center mb-6 text-primary group-hover:scale-110 transition-transform duration-300">
                 <span className="material-symbols-outlined text-3xl">{v.icon}</span>
               </div>
-              <h3 className="font-headline-md text-headline-md text-on-surface mb-2">
+              <h3 className="font-headline-md text-headline-md text-on-surface mb-4">
                 {text({ en: v.en, ko: v.ko }, lang)}
               </h3>
-              <h4 className="font-label-sm text-label-sm text-primary mb-4">
-                {text({ en: v.ko, ko: v.en }, lang)}
-              </h4>
               <p className="font-body-md text-body-md text-on-surface-variant">
                 {text(v.desc, lang)}
               </p>
@@ -133,16 +111,7 @@ export default function VisionPage() {
                 lang,
               )}
             </p>
-            <p className="font-body-lg text-body-lg text-on-surface-variant opacity-80 mb-6">
-              {text(
-                {
-                  en: "“북한을 위한 중보의 불꽃이 꺼지지 않는 시간의 성소, 72시간 연속 기도의 성벽을 세우기 위하여.”",
-                  ko: "“To build a continuous 72-hour wall of prayer, a sanctuary in time where the flame of intercession for the North never goes out.”",
-                },
-                lang,
-              )}
-            </p>
-            <div className="inline-flex items-center justify-center gap-3 bg-surface-container-lowest px-6 py-3 rounded-full shadow-sm border border-outline-variant/30">
+            <div className="inline-flex items-center justify-center gap-3 bg-surface-container-lowest px-6 py-3 rounded-full shadow-sm border border-outline-variant/30 mt-8">
               <div className="w-3 h-3 bg-primary rounded-full animate-pulse" />
               <span className="font-label-sm text-label-sm text-on-surface uppercase tracking-wider">
                 {text({ en: "The 72-Hour Mandate", ko: "72시간의 사명" }, lang)}
@@ -179,7 +148,7 @@ export default function VisionPage() {
               href="/register"
               className="bg-primary-container text-on-primary hover:bg-primary transition-all duration-300 font-label-sm text-label-sm px-8 py-4 rounded-full shadow-md hover:shadow-lg transform hover:-translate-y-1"
             >
-              {text({ en: "Register Now / 등록하기", ko: "등록하기 / Register Now" }, lang)}
+              {text({ en: "Register Now", ko: "등록하기" }, lang)}
             </Link>
           </div>
         </div>

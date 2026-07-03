@@ -2,11 +2,13 @@
 
 import { useLang, text, type Bi } from "@/lib/i18n";
 
-const LINKS: { label: Bi; href: string }[] = [
-  { label: { en: "Privacy Policy", ko: "개인정보 처리방침" }, href: "#" },
-  { label: { en: "Contact Us", ko: "문의하기" }, href: "#" },
-  { label: { en: "Terms of Service", ko: "이용약관" }, href: "#" },
-  { label: { en: "FAQ", ko: "자주 묻는 질문" }, href: "#" },
+// href null = destination not ready yet (rendered as a muted "coming soon"
+// label instead of a broken link). Fill in real pages / a mailto later.
+const LINKS: { label: Bi; href: string | null }[] = [
+  { label: { en: "Privacy Policy", ko: "개인정보 처리방침" }, href: null },
+  { label: { en: "Contact Us", ko: "문의하기" }, href: null },
+  { label: { en: "Terms of Service", ko: "이용약관" }, href: null },
+  { label: { en: "FAQ", ko: "자주 묻는 질문" }, href: null },
 ];
 
 export default function Footer() {
@@ -20,15 +22,25 @@ export default function Footer() {
             Flame Worship
           </div>
           <div className="flex flex-wrap justify-center gap-6 font-label-sm text-label-sm">
-            {LINKS.map((l) => (
-              <a
-                key={l.label.en}
-                href={l.href}
-                className="text-on-surface-variant hover:text-primary transition-colors underline opacity-80 hover:opacity-100"
-              >
-                {text(l.label, lang)}
-              </a>
-            ))}
+            {LINKS.map((l) =>
+              l.href ? (
+                <a
+                  key={l.label.en}
+                  href={l.href}
+                  className="text-on-surface-variant hover:text-primary transition-colors underline opacity-80 hover:opacity-100"
+                >
+                  {text(l.label, lang)}
+                </a>
+              ) : (
+                <span
+                  key={l.label.en}
+                  title={text({ en: "Coming soon", ko: "준비 중" }, lang)}
+                  className="text-on-surface-variant/50 cursor-default"
+                >
+                  {text(l.label, lang)}
+                </span>
+              ),
+            )}
           </div>
         </div>
         <div className="font-label-sm text-label-sm text-on-surface opacity-80 text-center">

@@ -81,7 +81,7 @@ export default function PrayerGuidePage() {
     <>
       <Hero
         badge={text(
-          { en: "Prayer Guide / 기도 가이드", ko: "기도 가이드 / Prayer Guide" },
+          { en: "Prayer Guide", ko: "기도 가이드" },
           lang,
         )}
         image={HERO_IMG}
@@ -108,7 +108,7 @@ export default function PrayerGuidePage() {
       <section className="py-stack-lg space-y-stack-md px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
         <div className="text-center md:text-left mb-8">
           <h2 className="font-headline-md text-headline-md text-on-surface">
-            {text({ en: "Daily Themes / 일일 주제", ko: "일일 주제 / Daily Themes" }, lang)}
+            {text({ en: "Daily Themes", ko: "일일 주제" }, lang)}
           </h2>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-gutter">
@@ -121,12 +121,9 @@ export default function PrayerGuidePage() {
                 <span className="material-symbols-outlined filled">{t.icon}</span>
               </div>
               <div>
-                <h3 className="font-headline-md text-on-surface text-lg">
+                <h3 className="font-headline-md text-on-surface text-lg mb-3">
                   {text({ en: t.en, ko: t.ko }, lang)}
                 </h3>
-                <h4 className="font-body-md text-body-md text-on-surface-variant mb-3">
-                  {text({ en: t.ko, ko: t.en }, lang)}
-                </h4>
                 <p className="font-body-md text-body-md text-on-surface-variant opacity-80 text-sm">
                   {text(t.desc, lang)}
                 </p>
@@ -182,13 +179,27 @@ export default function PrayerGuidePage() {
             )}
           </p>
           <div className="w-full space-y-3">
-            <button className="w-full flex items-center justify-center gap-2 bg-on-primary text-primary font-label-sm text-label-sm py-3 px-4 rounded-lg hover:bg-primary-fixed transition-colors">
+            <button
+              disabled
+              title={text({ en: "Coming soon", ko: "준비 중" }, lang)}
+              className="w-full flex items-center justify-center gap-2 bg-on-primary/60 text-primary/70 font-label-sm text-label-sm py-3 px-4 rounded-lg cursor-not-allowed"
+            >
               <span className="material-symbols-outlined">download</span>
               {text({ en: "Full Guide (PDF)", ko: "전체 가이드 (PDF)" }, lang)}
+              <span className="text-[10px] uppercase tracking-wide opacity-80">
+                {text({ en: "Soon", ko: "준비 중" }, lang)}
+              </span>
             </button>
-            <button className="w-full flex items-center justify-center gap-2 border border-on-primary/30 text-on-primary font-label-sm text-label-sm py-3 px-4 rounded-lg hover:bg-on-primary/10 transition-colors">
+            <button
+              disabled
+              title={text({ en: "Coming soon", ko: "준비 중" }, lang)}
+              className="w-full flex items-center justify-center gap-2 border border-on-primary/20 text-on-primary/60 font-label-sm text-label-sm py-3 px-4 rounded-lg cursor-not-allowed"
+            >
               <span className="material-symbols-outlined">image</span>
               {text({ en: "Media Kit", ko: "미디어 키트" }, lang)}
+              <span className="text-[10px] uppercase tracking-wide opacity-80">
+                {text({ en: "Soon", ko: "준비 중" }, lang)}
+              </span>
             </button>
           </div>
         </div>

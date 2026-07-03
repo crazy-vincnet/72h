@@ -49,7 +49,7 @@ export default function Home() {
     <>
       <Hero
         badge={text(
-          { en: "Registration Open / 등록 접수 중", ko: "등록 접수 중 / Registration Open" },
+          { en: "Registration Open", ko: "등록 접수 중" },
           lang,
         )}
         image={HERO_IMG}
@@ -106,10 +106,6 @@ export default function Home() {
               </span>
               <h2 className="font-headline-md text-headline-md text-on-surface mb-4">
                 {text({ en: "One Flame, One Heart", ko: "하나의 불꽃, 하나의 마음" }, lang)}
-                <br />
-                <span className="text-on-surface-variant font-normal text-lg">
-                  {text({ en: "하나의 불꽃, 하나의 마음", ko: "One Flame, One Heart" }, lang)}
-                </span>
               </h2>
               <p className="font-body-md text-body-md text-on-surface-variant max-w-lg">
                 {text(
@@ -151,9 +147,6 @@ export default function Home() {
             <div className="font-label-sm text-label-sm text-on-primary-container/80 uppercase tracking-wide">
               {text({ en: "Continuous Hours", ko: "연속 시간" }, lang)}
             </div>
-            <div className="font-label-sm text-label-sm text-on-primary-container/60 mt-1">
-              {text({ en: "연속 시간", ko: "Continuous Hours" }, lang)}
-            </div>
           </div>
         </div>
       </section>
@@ -162,10 +155,6 @@ export default function Home() {
       <section className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop pb-stack-lg">
         <h3 className="font-headline-md text-headline-md text-on-surface mb-8 text-center">
           {text({ en: "Prepare Your Heart", ko: "마음을 준비하세요" }, lang)}
-          <br />
-          <span className="text-sm font-normal text-on-surface-variant">
-            {text({ en: "마음을 준비하세요", ko: "Prepare Your Heart" }, lang)}
-          </span>
         </h3>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {quickLinks.map((q) => (
