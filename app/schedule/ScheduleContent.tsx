@@ -20,125 +20,25 @@ type Session = {
 
 const HERO_IMG = "/images/jeju-dawn.png";
 
+// Schedule is intentionally empty — fill in real sessions here.
+// Template for one session (add objects to the `sessions` array of a day):
+//
+//   {
+//     time: "10:00 AM",                                  // start time
+//     duration: { en: "2 Hours", ko: "2시간" },
+//     tag: { en: "Opening Worship", ko: "여는 예배" },
+//     title: { en: "Session title", ko: "세션 제목" },
+//     speaker: { en: "Speaker: TBA", ko: "강사: 추후 공지" },
+//     chips: [{ en: "Theme", ko: "주제" }],
+//     track: "worship",                                  // "worship" (left) | "special" (right)
+//     live: true,                                        // optional — shows a LIVE badge
+//   }
+//
 const DAYS: { label: Bi; date: Bi; sessions: Session[] }[] = [
-  {
-    label: { en: "Day 1", ko: "1일차" },
-    date: { en: "Aug 12", ko: "8월 12일" },
-    sessions: [
-      {
-        time: "10:00 AM",
-        duration: { en: "2 Hours", ko: "2시간" },
-        tag: { en: "Opening Worship", ko: "여는 예배" },
-        title: { en: "Kindling the Flame", ko: "불꽃을 지피며" },
-        speaker: { en: "Speaker: TBA", ko: "강사: 추후 공지" },
-        chips: [
-          { en: "Repentance", ko: "회개" },
-          { en: "Renewal", ko: "갱신" },
-        ],
-        track: "worship",
-      },
-      {
-        time: "02:00 PM",
-        duration: { en: "3 Hours", ko: "3시간" },
-        tag: { en: "Global Intercession", ko: "세계 중보기도" },
-        title: { en: "Praying for the Nations", ko: "열방을 위한 기도" },
-        speaker: { en: "Speaker: TBA", ko: "강사: 추후 공지" },
-        chips: [{ en: "Global Church", ko: "세계 교회" }],
-        track: "special",
-        live: true,
-      },
-      {
-        time: "07:00 PM",
-        duration: { en: "3 Hours", ko: "3시간" },
-        tag: { en: "Evening Worship", ko: "저녁 예배" },
-        title: { en: "Fire Night", ko: "불의 밤" },
-        speaker: { en: "Speaker: TBA", ko: "강사: 추후 공지" },
-        chips: [{ en: "Worship", ko: "예배" }],
-        track: "worship",
-      },
-    ],
-  },
-  {
-    label: { en: "Day 2", ko: "2일차" },
-    date: { en: "Aug 13", ko: "8월 13일" },
-    sessions: [
-      {
-        time: "06:00 AM",
-        duration: { en: "2 Hours", ko: "2시간" },
-        tag: { en: "Morning Prayer", ko: "아침 기도" },
-        title: { en: "Seeking His Face", ko: "그분의 얼굴을 구하며" },
-        speaker: { en: "Speaker: TBA", ko: "강사: 추후 공지" },
-        chips: [{ en: "Intercession", ko: "중보" }],
-        track: "worship",
-      },
-      {
-        time: "02:00 PM",
-        duration: { en: "3 Hours", ko: "3시간" },
-        tag: { en: "Prayer for the North", ko: "북한을 위한 기도" },
-        title: { en: "Walls Will Fall", ko: "성벽은 무너지리라" },
-        speaker: { en: "Speaker: TBA", ko: "강사: 추후 공지" },
-        chips: [
-          { en: "Reunification", ko: "통일" },
-          { en: "Healing", ko: "치유" },
-        ],
-        track: "special",
-      },
-    ],
-  },
-  {
-    label: { en: "Day 3", ko: "3일차" },
-    date: { en: "Aug 14", ko: "8월 14일" },
-    sessions: [
-      {
-        time: "06:00 AM",
-        duration: { en: "2 Hours", ko: "2시간" },
-        tag: { en: "Sunrise Worship", ko: "일출 예배" },
-        title: { en: "New Beginnings", ko: "새로운 시작" },
-        speaker: { en: "Speaker: TBA", ko: "강사: 추후 공지" },
-        chips: [{ en: "Hope", ko: "소망" }],
-        track: "worship",
-      },
-      {
-        time: "08:00 PM",
-        duration: { en: "4 Hours", ko: "4시간" },
-        tag: { en: "Night Watch", ko: "밤샘 기도" },
-        title: { en: "Through the Night", ko: "밤을 지새우며" },
-        speaker: { en: "Speaker: TBA", ko: "강사: 추후 공지" },
-        chips: [
-          { en: "Perseverance", ko: "인내" },
-          { en: "Watchfulness", ko: "깨어있음" },
-        ],
-        track: "special",
-      },
-    ],
-  },
-  {
-    label: { en: "Day 4", ko: "4일차" },
-    date: { en: "Aug 15", ko: "8월 15일" },
-    sessions: [
-      {
-        time: "06:00 AM",
-        duration: { en: "2 Hours", ko: "2시간" },
-        tag: { en: "Final Dawn", ko: "마지막 새벽" },
-        title: { en: "Sending Light", ko: "빛을 보내며" },
-        speaker: { en: "Speaker: TBA", ko: "강사: 추후 공지" },
-        chips: [{ en: "Revival", ko: "부흥" }],
-        track: "worship",
-      },
-      {
-        time: "08:00 AM",
-        duration: { en: "2 Hours · ends 10 AM", ko: "2시간 · 오전 10시 종료" },
-        tag: { en: "Closing Celebration", ko: "마무리 축제" },
-        title: { en: "The Flame Endures", ko: "꺼지지 않는 불꽃" },
-        speaker: { en: "Speaker: TBA", ko: "강사: 추후 공지" },
-        chips: [
-          { en: "Commissioning", ko: "파송" },
-          { en: "Thanksgiving", ko: "감사" },
-        ],
-        track: "special",
-      },
-    ],
-  },
+  { label: { en: "Day 1", ko: "1일차" }, date: { en: "Aug 12", ko: "8월 12일" }, sessions: [] },
+  { label: { en: "Day 2", ko: "2일차" }, date: { en: "Aug 13", ko: "8월 13일" }, sessions: [] },
+  { label: { en: "Day 3", ko: "3일차" }, date: { en: "Aug 14", ko: "8월 14일" }, sessions: [] },
+  { label: { en: "Day 4", ko: "4일차" }, date: { en: "Aug 15", ko: "8월 15일" }, sessions: [] },
 ];
 
 // --- time helpers ---
@@ -230,9 +130,13 @@ export default function SchedulePage() {
         >
           {/* Left — worship */}
           <div className="relative">
-            {worship.map((s, i) => (
-              <SessionBlock key={i} s={s} side="left" lang={lang} rangeStart={rangeStart} />
-            ))}
+            {worship.length === 0 ? (
+              <EmptyColumn lang={lang} />
+            ) : (
+              worship.map((s, i) => (
+                <SessionBlock key={i} s={s} side="left" lang={lang} rangeStart={rangeStart} />
+              ))
+            )}
           </div>
 
           {/* Center — 24h ruler (clipped to the day's active window) */}
@@ -259,9 +163,13 @@ export default function SchedulePage() {
 
           {/* Right — special */}
           <div className="relative">
-            {special.map((s, i) => (
-              <SessionBlock key={i} s={s} side="right" lang={lang} rangeStart={rangeStart} />
-            ))}
+            {special.length === 0 ? (
+              <EmptyColumn lang={lang} />
+            ) : (
+              special.map((s, i) => (
+                <SessionBlock key={i} s={s} side="right" lang={lang} rangeStart={rangeStart} />
+              ))
+            )}
           </div>
         </div>
 
@@ -280,6 +188,17 @@ export default function SchedulePage() {
         </div>
       </section>
     </>
+  );
+}
+
+/** Empty-state shown in a track column when a day has no sessions yet. */
+function EmptyColumn({ lang }: { lang: Lang }) {
+  return (
+    <div className="absolute inset-0 flex items-start justify-center pt-16">
+      <span className="font-label-sm text-label-sm text-on-surface-variant/60">
+        {text({ en: "Sessions coming soon", ko: "세션 준비 중" }, lang)}
+      </span>
+    </div>
   );
 }
 
@@ -361,6 +280,11 @@ function MobileTrack({
         {title}
       </h2>
       <div className="space-y-3">
+        {items.length === 0 && (
+          <p className="glass-panel rounded-xl p-5 font-label-sm text-label-sm text-on-surface-variant/70">
+            {text({ en: "Sessions coming soon", ko: "세션 준비 중" }, lang)}
+          </p>
+        )}
         {items.map((s, i) => (
           <Link
             key={i}
