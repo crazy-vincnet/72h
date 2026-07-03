@@ -237,8 +237,8 @@ export default function RegisterPage() {
 
           <p className="text-center font-label-sm text-label-sm text-on-surface-variant/70">
             {t({
-              en: "Event dates and venue are still being confirmed (TBA).",
-              ko: "행사 날짜와 장소는 아직 확정 중입니다 (추후 공지).",
+              en: "Aug 12–15, 2026 · Lee Ki-poong Mission Memorial Hall, Jeju.",
+              ko: "2026년 8월 12–15일 · 제주 이기풍선교기념관.",
             })}
           </p>
         </form>

@@ -21,13 +21,13 @@ type Session = {
 const DAYS: { label: Bi; date: Bi; sessions: Session[] }[] = [
   {
     label: { en: "Day 1", ko: "1일차" },
-    date: { en: "TBA", ko: "추후 공지" },
+    date: { en: "Aug 12", ko: "8월 12일" },
     sessions: [
       {
-        time: "06:00 AM",
+        time: "10:00 AM",
         duration: { en: "2 Hours", ko: "2시간" },
         tag: { en: "Opening Worship", ko: "여는 예배" },
-        title: { en: "Awakening the Dawn", ko: "새벽을 깨우며" },
+        title: { en: "Kindling the Flame", ko: "불꽃을 지피며" },
         speaker: { en: "Speaker: TBA", ko: "강사: 추후 공지" },
         chips: [
           { en: "Repentance", ko: "회개" },
@@ -35,7 +35,7 @@ const DAYS: { label: Bi; date: Bi; sessions: Session[] }[] = [
         ],
       },
       {
-        time: "08:00 AM",
+        time: "02:00 PM",
         duration: { en: "3 Hours", ko: "3시간" },
         tag: { en: "Global Intercession", ko: "세계 중보기도" },
         title: { en: "Praying for the Nations", ko: "열방을 위한 기도" },
@@ -55,7 +55,7 @@ const DAYS: { label: Bi; date: Bi; sessions: Session[] }[] = [
   },
   {
     label: { en: "Day 2", ko: "2일차" },
-    date: { en: "TBA", ko: "추후 공지" },
+    date: { en: "Aug 13", ko: "8월 13일" },
     sessions: [
       {
         time: "06:00 AM",
@@ -80,7 +80,7 @@ const DAYS: { label: Bi; date: Bi; sessions: Session[] }[] = [
   },
   {
     label: { en: "Day 3", ko: "3일차" },
-    date: { en: "TBA", ko: "추후 공지" },
+    date: { en: "Aug 14", ko: "8월 14일" },
     sessions: [
       {
         time: "06:00 AM",
@@ -91,8 +91,33 @@ const DAYS: { label: Bi; date: Bi; sessions: Session[] }[] = [
         chips: [{ en: "Hope", ko: "소망" }],
       },
       {
-        time: "04:00 PM",
+        time: "08:00 PM",
         duration: { en: "4 Hours", ko: "4시간" },
+        tag: { en: "Night Watch", ko: "밤샘 기도" },
+        title: { en: "Through the Night", ko: "밤을 지새우며" },
+        speaker: { en: "Speaker: TBA", ko: "강사: 추후 공지" },
+        chips: [
+          { en: "Perseverance", ko: "인내" },
+          { en: "Watchfulness", ko: "깨어있음" },
+        ],
+      },
+    ],
+  },
+  {
+    label: { en: "Day 4", ko: "4일차" },
+    date: { en: "Aug 15", ko: "8월 15일" },
+    sessions: [
+      {
+        time: "06:00 AM",
+        duration: { en: "2 Hours", ko: "2시간" },
+        tag: { en: "Final Dawn", ko: "마지막 새벽" },
+        title: { en: "Sending Light", ko: "빛을 보내며" },
+        speaker: { en: "Speaker: TBA", ko: "강사: 추후 공지" },
+        chips: [{ en: "Revival", ko: "부흥" }],
+      },
+      {
+        time: "08:00 AM",
+        duration: { en: "2 Hours · ends 10 AM", ko: "2시간 · 오전 10시 종료" },
         tag: { en: "Closing Celebration", ko: "마무리 축제" },
         title: { en: "The Flame Endures", ko: "꺼지지 않는 불꽃" },
         speaker: { en: "Speaker: TBA", ko: "강사: 추후 공지" },

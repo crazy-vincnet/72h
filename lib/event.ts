@@ -10,16 +10,27 @@ import type { Bi } from "@/lib/i18n";
  * While EVENT_DATE_CONFIRMED is false, the home page shows a "date to be
  * announced" panel instead of a countdown ticking toward a fake date.
  */
-export const EVENT_DATE_CONFIRMED = false;
+export const EVENT_DATE_CONFIRMED = true;
 
-export const EVENT_START = new Date("2026-10-12T06:00:00+09:00");
+// 72 hours: Aug 12, 2026 10:00 KST → Aug 15, 2026 10:00 KST.
+export const EVENT_START = new Date("2026-08-12T10:00:00+09:00");
+export const EVENT_END = new Date("2026-08-15T10:00:00+09:00");
 
 export const EVENT_INFO: {
   dates: Bi;
   location: Bi;
   status: Bi;
 } = {
-  dates: { en: "Dates: To be announced", ko: "날짜: 추후 공지" },
-  location: { en: "Jeju Island — venue TBA", ko: "제주도 — 장소 추후 공지" },
+  dates: { en: "Aug 12–15, 2026", ko: "2026년 8월 12–15일" },
+  location: {
+    en: "Lee Ki-poong Mission Memorial Hall · Waheul-ri, Jocheon-eup, Jeju",
+    ko: "이기풍선교기념관 · 제주시 조천읍 와흘리 산14-3",
+  },
   status: { en: "Registration Open", ko: "등록 접수 중" },
+};
+
+/** Full postal address for maps / directions. */
+export const EVENT_ADDRESS: Bi = {
+  en: "San 14-3, Waheul-ri, Jocheon-eup, Jeju-si, Jeju-do, South Korea",
+  ko: "제주특별자치도 제주시 조천읍 와흘리 산14-3",
 };

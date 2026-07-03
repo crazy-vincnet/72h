@@ -70,7 +70,27 @@ export default function Home() {
           lang,
         )}
       >
-        <div className="mt-4 flex flex-col sm:flex-row gap-4 items-center justify-center w-full">
+        <div className="flex flex-col sm:flex-row items-center gap-x-6 gap-y-2 text-on-surface-variant font-label-sm text-label-sm">
+          <span className="inline-flex items-center gap-2">
+            <span className="material-symbols-outlined text-primary" style={{ fontSize: 18 }}>
+              calendar_month
+            </span>
+            {text(
+              { en: "Aug 12–15, 2026", ko: "2026년 8월 12–15일" },
+              lang,
+            )}
+          </span>
+          <span className="inline-flex items-center gap-2">
+            <span className="material-symbols-outlined text-primary" style={{ fontSize: 18 }}>
+              location_on
+            </span>
+            {text(
+              { en: "Lee Ki-poong Mission Memorial Hall, Jeju", ko: "제주 이기풍선교기념관" },
+              lang,
+            )}
+          </span>
+        </div>
+        <div className="mt-2 flex flex-col sm:flex-row gap-4 items-center justify-center w-full">
           <Link
             href="/register"
             className="w-full sm:w-auto bg-primary text-on-primary px-8 py-4 rounded-full font-label-sm text-label-sm font-bold shadow-lg hover:shadow-xl hover:bg-primary/90 transition-all duration-300"
@@ -134,7 +154,19 @@ export default function Home() {
                 {text({ en: "Location", ko: "장소" }, lang)}
               </div>
               <div className="font-body-md text-body-md font-semibold text-on-surface">
-                {text({ en: "Jeju Island — TBA", ko: "제주도 — 추후 공지" }, lang)}
+                {text(
+                  { en: "Lee Ki-poong Mission Memorial Hall", ko: "이기풍선교기념관" },
+                  lang,
+                )}
+              </div>
+              <div className="font-label-sm text-label-sm text-on-surface-variant mt-1">
+                {text(
+                  {
+                    en: "Waheul-ri, Jocheon-eup, Jeju",
+                    ko: "제주시 조천읍 와흘리 산14-3",
+                  },
+                  lang,
+                )}
               </div>
             </div>
           </div>
