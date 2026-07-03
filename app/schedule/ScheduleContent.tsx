@@ -133,15 +133,6 @@ const DAYS: { label: Bi; date: Bi; sessions: Session[] }[] = [
 export default function SchedulePage() {
   const { lang } = useLang();
   const [day, setDay] = useState(0);
-  const [selected, setSelected] = useState(0);
-
-  const selectDay = (i: number) => {
-    setDay(i);
-    setSelected(0);
-  };
-
-  const sessions = DAYS[day].sessions;
-  const active = sessions[selected];
 
   return (
     <>
@@ -165,7 +156,7 @@ export default function SchedulePage() {
           {DAYS.map((d, i) => (
             <button
               key={i}
-              onClick={() => selectDay(i)}
+              onClick={() => setDay(i)}
               className={
                 "px-6 py-3 rounded-full font-label-sm text-label-sm border transition-colors text-center " +
                 (day === i
@@ -180,149 +171,106 @@ export default function SchedulePage() {
           ))}
         </div>
 
-        {/* Two-pane: left = full schedule list, right = selected session detail */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-start">
-          {/* LEFT — full schedule */}
-          <div className="lg:col-span-5">
-            <h2 className="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant mb-4">
-              {text({ en: "Full Schedule", ko: "전체 스케줄" }, lang)}
-            </h2>
-            <ul className="relative space-y-2 before:absolute before:left-[7px] before:top-2 before:bottom-2 before:w-px before:bg-outline-variant/30">
-              {sessions.map((s, i) => {
-                const isActive = i === selected;
-                return (
-                  <li key={i} className="relative">
-                    <button
-                      onClick={() => setSelected(i)}
-                      aria-pressed={isActive}
-                      className={
-                        "w-full text-left flex items-start gap-3 rounded-xl pl-5 pr-4 py-3 transition-colors " +
-                        (isActive
-                          ? "bg-primary-fixed/40"
-                          : "hover:bg-surface-variant/40")
-                      }
-                    >
-                      <span
-                        className={
-                          "mt-1.5 w-3 h-3 rounded-full shrink-0 -ml-[26px] bg-primary " +
-                          (s.live
-                            ? "animate-pulse ring-4 ring-primary/20"
-                            : isActive
-                              ? "ring-4 ring-primary-fixed"
-                              : "ring-4 ring-surface")
-                        }
-                      />
-                      <span className="flex-1">
-                        <span className="flex items-center gap-2">
-                          <span
-                            className={
-                              "font-headline-md text-base " +
-                              (isActive || s.live ? "text-primary" : "text-on-surface")
-                            }
-                          >
-                            {s.time}
-                          </span>
-                          {s.live && (
-                            <span className="px-2 py-0.5 rounded-full bg-primary-container text-on-primary-container text-[10px] font-bold uppercase tracking-wider">
-                              Live
-                            </span>
-                          )}
-                          <span className="font-label-sm text-label-sm text-on-surface-variant ml-auto">
-                            {text(s.duration, lang)}
-                          </span>
-                        </span>
-                        <span className="block font-body-md text-body-md text-on-surface mt-0.5">
-                          {text(s.title, lang)}
-                        </span>
-                        <span className="block font-label-sm text-label-sm text-on-surface-variant mt-0.5">
-                          {text(s.tag, lang)}
-                        </span>
-                      </span>
-                    </button>
-                  </li>
-                );
-              })}
-            </ul>
-          </div>
+        {/* Timeline */}
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-gutter relative">
+          <div className="hidden md:block absolute left-[8.33%] top-0 bottom-0 w-px bg-outline-variant/30" />
 
-          {/* RIGHT — selected session detail */}
-          <div className="lg:col-span-7 lg:sticky lg:top-24">
+          {DAYS[day].sessions.map((s, i) => (
             <div
-              className={
-                active.live
-                  ? "bg-surface-container-lowest p-8 rounded-2xl border-t-2 border-primary card-shadow relative overflow-hidden"
-                  : "glass-panel p-8 rounded-2xl relative overflow-hidden"
-              }
+              key={i}
+              className="md:col-span-12 grid grid-cols-1 md:grid-cols-12 gap-gutter relative z-10 group mt-8 first:mt-0"
             >
-              <div className="absolute right-0 top-0 opacity-5 w-40 h-40 transform translate-x-10 -translate-y-10 pointer-events-none">
-                <span className="material-symbols-outlined" style={{ fontSize: 160 }}>
-                  local_fire_department
-                </span>
+              <div className="md:col-span-1 flex md:justify-center pt-4">
+                <div
+                  className={
+                    "w-3 h-3 rounded-full bg-primary mt-1.5 md:mx-auto " +
+                    (s.live ? "animate-pulse ring-4 ring-primary/20" : "ring-4 ring-primary-fixed")
+                  }
+                />
               </div>
-              <div className="relative z-10">
-                <div className="flex items-center gap-3 mb-4">
-                  <span
-                    className={
-                      "font-headline-md text-2xl " +
-                      (active.live ? "text-primary" : "text-on-surface")
-                    }
-                  >
-                    {active.time}
-                  </span>
-                  <span className="font-label-sm text-label-sm text-on-surface-variant">
-                    {text(active.duration, lang)}
-                  </span>
-                  {active.live && (
+              <div className="md:col-span-2 pt-3">
+                <div
+                  className={
+                    "font-headline-md text-lg flex items-center gap-2 " +
+                    (s.live ? "text-primary" : "text-on-surface")
+                  }
+                >
+                  {s.time}
+                  {s.live && (
                     <span className="px-2 py-0.5 rounded-full bg-primary-container text-on-primary-container text-[10px] font-bold uppercase tracking-wider">
                       Live
                     </span>
                   )}
                 </div>
-                <span
-                  className={
-                    "inline-block px-3 py-1 rounded-full font-label-sm text-xs mb-3 " +
-                    (active.live
-                      ? "bg-primary-fixed/30 text-primary"
-                      : "bg-surface-container-highest text-on-surface-variant")
-                  }
-                >
-                  {text(active.tag, lang)}
-                </span>
-                <h3 className="font-headline-md text-headline-md text-on-surface mb-2">
-                  {text(active.title, lang)}
-                </h3>
-                <p className="font-body-md text-body-md text-on-surface-variant mb-5 flex items-center gap-2">
-                  <span className="material-symbols-outlined text-secondary text-sm">
-                    person
-                  </span>
-                  {text(active.speaker, lang)}
-                </p>
-                <div className="flex flex-wrap gap-2 mb-8">
-                  {active.chips.map((c, ci) => (
-                    <span
-                      key={ci}
-                      className="px-2 py-1 rounded bg-secondary-container/30 text-on-secondary-container text-xs font-label-sm"
-                    >
-                      {text(c, lang)}
-                    </span>
-                  ))}
+                <div className="font-label-sm text-on-surface-variant mt-1">
+                  {text(s.duration, lang)}
                 </div>
-                <Link
-                  href="/register"
+              </div>
+              <div className="md:col-span-9">
+                <div
                   className={
-                    "inline-flex w-full sm:w-auto justify-center px-8 py-3 rounded-lg font-label-sm text-label-sm font-bold transition-colors text-center " +
-                    (active.live
-                      ? "bg-primary text-on-primary hover:bg-primary-container shadow-sm"
-                      : "border-2 border-secondary text-secondary hover:bg-secondary hover:text-on-secondary")
+                    s.live
+                      ? "bg-surface-container-lowest p-6 rounded-xl border-t-2 border-primary card-shadow transition-transform hover:-translate-y-1 relative overflow-hidden"
+                      : "glass-panel p-6 rounded-xl transition-transform hover:-translate-y-1"
                   }
                 >
-                  {active.live
-                    ? text({ en: "Join Live", ko: "실시간 참여" }, lang)
-                    : text({ en: "Join Slot", ko: "참여하기" }, lang)}
-                </Link>
+                  {s.live && (
+                    <div className="absolute right-0 top-0 opacity-5 w-32 h-32 transform translate-x-8 -translate-y-8">
+                      <span className="material-symbols-outlined" style={{ fontSize: 128 }}>
+                        local_fire_department
+                      </span>
+                    </div>
+                  )}
+                  <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 relative z-10">
+                    <div>
+                      <span
+                        className={
+                          "inline-block px-3 py-1 rounded-full font-label-sm text-xs mb-3 " +
+                          (s.live
+                            ? "bg-primary-fixed/30 text-primary"
+                            : "bg-surface-container-highest text-on-surface-variant")
+                        }
+                      >
+                        {text(s.tag, lang)}
+                      </span>
+                      <h3 className="font-headline-md text-on-surface mb-2">
+                        {text(s.title, lang)}
+                      </h3>
+                      <p className="font-body-md text-on-surface-variant mb-4 flex items-center gap-2">
+                        <span className="material-symbols-outlined text-secondary text-sm">
+                          person
+                        </span>
+                        {text(s.speaker, lang)}
+                      </p>
+                      <div className="flex flex-wrap gap-2">
+                        {s.chips.map((c, ci) => (
+                          <span
+                            key={ci}
+                            className="px-2 py-1 rounded bg-secondary-container/30 text-on-secondary-container text-xs font-label-sm"
+                          >
+                            {text(c, lang)}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                    <Link
+                      href="/register"
+                      className={
+                        "w-full md:w-auto px-6 py-3 rounded-lg font-label-sm text-label-sm transition-colors text-center " +
+                        (s.live
+                          ? "bg-primary text-on-primary hover:bg-primary-container shadow-sm"
+                          : "border-2 border-secondary text-secondary hover:bg-secondary hover:text-on-secondary")
+                      }
+                    >
+                      {s.live
+                        ? text({ en: "Join Live", ko: "실시간 참여" }, lang)
+                        : text({ en: "Join Slot", ko: "참여하기" }, lang)}
+                    </Link>
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
+          ))}
         </div>
       </section>
     </>
