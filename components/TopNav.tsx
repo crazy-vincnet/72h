@@ -8,6 +8,7 @@ import { useLang, text, type Lang } from "@/lib/i18n";
 
 export default function TopNav() {
   const pathname = usePathname();
+  if (pathname?.startsWith("/admin")) return null;
   const { lang, setLang } = useLang();
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);

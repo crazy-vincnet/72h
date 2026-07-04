@@ -1,5 +1,6 @@
 "use client";
 
+import { usePathname } from "next/navigation";
 import { useLang, text, type Bi } from "@/lib/i18n";
 
 // href null = destination not ready yet (rendered as a muted "coming soon"
@@ -12,6 +13,8 @@ const LINKS: { label: Bi; href: string | null }[] = [
 ];
 
 export default function Footer() {
+  const pathname = usePathname();
+  if (pathname?.startsWith("/admin")) return null;
   const { lang } = useLang();
 
   return (

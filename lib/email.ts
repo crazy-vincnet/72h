@@ -7,6 +7,7 @@ export type RegistrationPayload = {
   participants: number;
   days: string[];
   message: string | null;
+  file_url?: string | null;
 };
 
 /**
@@ -59,6 +60,11 @@ export async function sendRegistrationEmails(reg: RegistrationPayload) {
           <tr><td style="padding:4px 12px 4px 0;color:#5b4039">인원</td><td>${reg.participants}</td></tr>
           <tr><td style="padding:4px 12px 4px 0;color:#5b4039">참여일</td><td>${escapeHtml(reg.days.join(", ") || "-")}</td></tr>
           <tr><td style="padding:4px 12px 4px 0;color:#5b4039;vertical-align:top">메시지</td><td>${escapeHtml(reg.message ?? "-")}</td></tr>
+          ${
+            reg.file_url
+              ? `<tr><td style="padding:4px 12px 4px 0;color:#5b4039">첨부파일</td><td><a href="${reg.file_url}" target="_blank">${escapeHtml(reg.file_url)}</a></td></tr>`
+              : ""
+          }
         </table>
       </div>`;
     await safeSend({

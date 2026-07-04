@@ -10,8 +10,6 @@ const HERO_IMG =
   "/images/jeju-dawn.png";
 const VISION_IMG =
   "/images/sanctuary-light.png";
-const MAP_IMG =
-  "/images/jeju-map.jpg";
 
 export default function Home() {
   const { lang } = useLang();
@@ -143,14 +141,15 @@ export default function Home() {
           {/* Map / location */}
           <div className="bg-surface-container-highest rounded-2xl relative overflow-hidden flex flex-col justify-end p-6 shadow-sm min-h-[300px]">
             <div className="absolute inset-0">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                className="w-full h-full object-cover opacity-80"
-                alt="A clean 3D map of Jeju Island, South Korea with a location pin marker."
-                src={MAP_IMG}
+              <iframe
+                title={text({ en: "Event location map", ko: "행사 장소 지도" }, lang)}
+                className="w-full h-full border-0"
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                src="https://maps.google.com/maps?q=%EC%A0%9C%EC%A3%BC%20%EC%9D%B4%EA%B8%B0%ED%92%8D%EC%84%A0%EA%B5%90%EA%B8%B0%EB%85%90%EA%B4%80&z=14&hl=ko&output=embed"
               />
             </div>
-            <div className="relative z-10 bg-surface-container-lowest/90 backdrop-blur-sm p-4 rounded-xl border border-outline-variant/20">
+            <div className="relative z-10 bg-surface-container-lowest/90 backdrop-blur-sm p-4 rounded-xl border border-outline-variant/20 pointer-events-none">
               <div className="font-label-sm text-label-sm text-primary mb-1 uppercase">
                 {text({ en: "Location", ko: "장소" }, lang)}
               </div>
@@ -173,11 +172,14 @@ export default function Home() {
           </div>
 
           {/* Stats */}
-          <div className="bg-primary-container rounded-2xl p-8 flex flex-col justify-center items-center text-center shadow-sm min-h-[200px]">
-            <div className="font-headline-xl-mobile text-headline-xl-mobile md:font-headline-xl md:text-headline-xl text-on-primary-container font-bold mb-2">
+          <div className="relative overflow-hidden rounded-2xl p-8 flex flex-col justify-center items-center text-center min-h-[200px] border border-white/40 bg-gradient-to-br from-primary/25 to-primary/5 backdrop-blur-xl shadow-lg shadow-primary/10">
+            {/* Decorative color blobs the frosted glass refracts */}
+            <div className="pointer-events-none absolute -top-10 -right-8 w-32 h-32 rounded-full bg-primary/40 blur-2xl" />
+            <div className="pointer-events-none absolute -bottom-12 -left-10 w-36 h-36 rounded-full bg-primary/25 blur-2xl" />
+            <div className="relative z-10 font-headline-xl-mobile text-headline-xl-mobile md:font-headline-xl md:text-headline-xl text-primary font-bold mb-2 drop-shadow-sm">
               72
             </div>
-            <div className="font-label-sm text-label-sm text-on-primary-container/80 uppercase tracking-wide">
+            <div className="relative z-10 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wide">
               {text({ en: "Continuous Hours", ko: "연속 시간" }, lang)}
             </div>
           </div>

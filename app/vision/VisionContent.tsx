@@ -49,8 +49,8 @@ export default function VisionPage() {
         title={text({ en: "Vision", ko: "비전" }, lang)}
         subtitle={text(
           {
-            en: "One Flame, One Heart for the Restoration of the North.",
-            ko: "북한의 회복을 위한 하나의 불꽃, 하나의 마음.",
+            en: "One Flame, One Heart for the Restoration of the Korean Peninsula and the Nations.",
+            ko: "한반도와 열방의 회복을 위한 하나의 불꽃, 하나의 마음.",
           },
           lang,
         )}
@@ -105,8 +105,8 @@ export default function VisionPage() {
             <p className="font-headline-md md:font-headline-xl-mobile text-headline-md md:text-headline-xl-mobile text-on-surface italic leading-relaxed mb-8">
               {text(
                 {
-                  en: "“To build a continuous 72-hour wall of prayer, a sanctuary in time where the flame of intercession for the North never goes out.”",
-                  ko: "“북한을 위한 중보의 불꽃이 꺼지지 않는 시간의 성소, 72시간 연속 기도의 성벽을 세우기 위하여.”",
+                  en: "“To build a continuous 72-hour wall of prayer, a sanctuary in time where the flame of intercession for the Korean Peninsula and the Nations never goes out.”",
+                  ko: "“한반도와 열방을 위한 중보의 불꽃이 꺼지지 않는 시간의 성소, 72시간 연속 기도의 성벽을 세우기 위하여.”",
                 },
                 lang,
               )}

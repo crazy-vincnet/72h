@@ -46,7 +46,7 @@ export const DONATION_CONFIRMED = true;
 export const DONATION = {
   bank: { en: "Hana Bank", ko: "하나은행" },
   account: "924-910171-47707",
-  holder: { en: "Kim Seong-min", ko: "김성민" },
+  holder: { en: "Kim Sung-min", ko: "김성민" },
   /** Optional contact for donation inquiries (email or phone). Empty = hidden. */
   inquiry: "",
 };

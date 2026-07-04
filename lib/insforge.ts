@@ -8,6 +8,6 @@ import { createClient } from "@insforge/sdk";
  * least privilege for a public form. Used from app/api/register.
  */
 export const insforge = createClient({
-  baseUrl: process.env.INSFORGE_URL!,
-  anonKey: process.env.INSFORGE_ANON_KEY!,
+  baseUrl: process.env.INSFORGE_URL || "https://7zh8h5k3.us-east.insforge.app",
+  anonKey: process.env.INSFORGE_ANON_KEY || "placeholder",
 });

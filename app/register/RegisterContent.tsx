@@ -44,22 +44,14 @@ export default function RegisterPage() {
 
     const form = e.currentTarget;
     const fd = new FormData(form);
-    const payload = {
-      name: fd.get("name"),
-      email: fd.get("email"),
-      phone: fd.get("phone"),
-      participants: fd.get("participants"),
-      days: fd.getAll("days"),
-      message: fd.get("message"),
-      company: fd.get("company"), // honeypot — real users leave this empty
-      elapsedMs: mountedAt.current ? Date.now() - mountedAt.current : undefined,
-    };
+    if (mountedAt.current) {
+      fd.append("elapsedMs", String(Date.now() - mountedAt.current));
+    }
 
     try {
       const res = await fetch("/api/register", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
+        body: fd,
       });
       const json = await res.json();
       if (!res.ok || !json.ok) {

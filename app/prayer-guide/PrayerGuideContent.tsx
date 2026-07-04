@@ -44,35 +44,51 @@ export default function PrayerGuidePage() {
 
   const points = [
     {
-      en: "Protection for the Underground Believers",
-      ko: "지하 성도들을 위한 보호",
+      en: "Pure Hearts & Presence",
+      ko: "순전한 마음과 하나님의 임재",
       desc: {
-        en: "Pray for safety, courage, and perseverance for those practicing their faith in secret.",
-        ko: "비밀리에 신앙을 지키는 이들의 안전과 용기, 인내를 위해 기도하세요.",
+        en: "Pray that God's presence will overflow through pure worship offered in spirit and truth.",
+        ko: "영과 진리로 주님께 드리는 순전한 예배를 통해 하나님의 임재가 충만하도록.",
       },
     },
     {
-      en: "Provision of Basic Needs",
-      ko: "기본적인 필요의 공급",
+      en: "Restoration",
+      ko: "회복",
       desc: {
-        en: "Intercede for access to food, clean water, and medical care for vulnerable populations.",
-        ko: "취약 계층의 식량, 깨끗한 물, 의료 접근을 위해 중보하세요.",
+        en: "Pray that individuals recover their identity as God's beloved, spreading that fire to the church community.",
+        ko: "하나님의 사랑받는 자 정체성의 회복이 개인에게 임하여 그 불길이 교회공동체까지 흘러가도록.",
       },
     },
     {
-      en: "Wisdom for Global Leaders",
-      ko: "세계 지도자들을 위한 지혜",
+      en: "Reunification",
+      ko: "한반도의 통일",
       desc: {
-        en: "Pray that international leaders act with justice, compassion, and divine wisdom regarding the peninsula.",
-        ko: "국제 지도자들이 한반도에 대해 정의와 긍휼, 하나님의 지혜로 행동하도록 기도하세요.",
+        en: "Pray that the path to peaceful reunification of the Korean Peninsula opens up centered on the Gospel.",
+        ko: "복음을 중심으로 평화로운 한반도 통일의 길이 열리도록.",
       },
     },
     {
-      en: "Healing of Generational Trauma",
-      ko: "세대를 잇는 상처의 치유",
+      en: "The Nations",
+      ko: "열방",
       desc: {
-        en: "Pray for the deep emotional and psychological wounds of divided families to find comfort and resolution.",
-        ko: "이산가족의 깊은 정서적, 심리적 상처가 위로와 회복을 찾도록 기도하세요.",
+        en: "Pray that the fire of the Gospel spreads beyond the Korean Peninsula and into the nations.",
+        ko: "한반도를 넘어 열방 가운데 복음의 불길이 일어나도록.",
+      },
+    },
+    {
+      en: "The Next Generation",
+      ko: "다음 세대",
+      desc: {
+        en: "Pray that a holy fire rises among the next generation of worshippers and intercessors raised by God.",
+        ko: "하나님이 일으키시는 다음 세대 예배자들과 중보자들 가운데 거룩한 불길이 일어나도록.",
+      },
+    },
+    {
+      en: "Provision",
+      ko: "재정의 공급",
+      desc: {
+        en: "Pray that all financial resources needed for this assembly are fully and abundantly provided.",
+        ko: "이번 집회에 필요한 모든 재정이 온전히 채워지도록",
       },
     },
   ];
@@ -88,17 +104,17 @@ export default function PrayerGuidePage() {
         alt="A serene, expansive landscape of Jeju Island at dawn with a calm ocean, soft rolling hills, and a bright clear sky."
         title={
           <>
-            {text({ en: "Guidelines for the", ko: "북한의" }, lang)} <br />
+            {text({ en: "Guidelines for the", ko: "한반도와 열방의" }, lang)} <br />
             <span className="text-primary">
               {text({ en: "Restoration", ko: "회복" }, lang)}
             </span>{" "}
-            {text({ en: "of North Korea", ko: "을 위한 지침" }, lang)}
+            {text({ en: "of the Korean Peninsula & Nations", ko: "을 위한 지침" }, lang)}
           </>
         }
         subtitle={text(
           {
-            en: "Intercessory prayer guidelines for the restoration of North Korea.",
-            ko: "북한의 회복을 위한 중보기도 지침.",
+            en: "Intercessory prayer guidelines for the restoration of the Korean Peninsula and the Nations.",
+            ko: "한반도와 열방의 회복을 위한 중보기도 지침.",
           },
           lang,
         )}
