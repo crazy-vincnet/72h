@@ -75,7 +75,7 @@ VALUES
 INSERT INTO public.schedule_sessions (day, time, duration_en, duration_ko, tag_en, tag_ko, title_en, title_ko, speaker_en, speaker_ko, track, live, sort_order)
 VALUES
   (2, '12:00 AM', '24 Hours', '온종일', 'Continuous Worship', '연속 예배', 'Flame 72-Hour Worship — Day 2', 'Flame 72시간 예배 2일차', 'Everyone together', '모두 함께', 'worship', true, 0),
-  (2, '5:00 AM', '1 Hour', '1시간', 'Meditation', '묵상', 'Communal Word Meditation', '공동말씀묵상', 'Flame Worship', 'Flame Worship', 'special', false, 1),
+  (2, '5:00 AM', '1 Hour', '1시간', 'Meditation', '묵상', 'Corporate Word Meditation', '공동말씀묵상', 'Flame Worship', 'Flame Worship', 'special', false, 1),
   (2, '7:00 AM', '1 Hour', '1시간', 'Meal', '식사', 'Breakfast', '아침', 'Flame Worship', 'Flame Worship', 'special', false, 2),
   (2, '1:00 PM', '1 Hour', '1시간', 'Meal', '식사', 'Lunch', '점심', 'Flame Worship', 'Flame Worship', 'special', false, 3),
   (2, '4:00 PM', '1 Hour', '1시간', 'Sharing', '나눔', '1st Sharing', '1차 나눔', 'Flame Worship', 'Flame Worship', 'special', false, 4),
@@ -87,7 +87,7 @@ VALUES
 INSERT INTO public.schedule_sessions (day, time, duration_en, duration_ko, tag_en, tag_ko, title_en, title_ko, speaker_en, speaker_ko, track, live, sort_order)
 VALUES
   (3, '12:00 AM', '24 Hours', '온종일', 'Continuous Worship', '연속 예배', 'Flame 72-Hour Worship — Day 3', 'Flame 72시간 예배 3일차', 'Everyone together', '모두 함께', 'worship', true, 0),
-  (3, '5:00 AM', '1 Hour', '1시간', 'Meditation', '묵상', 'Communal Word Meditation', '공동말씀묵상', 'Flame Worship', 'Flame Worship', 'special', false, 1),
+  (3, '5:00 AM', '1 Hour', '1시간', 'Meditation', '묵상', 'Corporate Word Meditation', '공동말씀묵상', 'Flame Worship', 'Flame Worship', 'special', false, 1),
   (3, '7:00 AM', '1 Hour', '1시간', 'Meal', '식사', 'Breakfast', '아침', 'Flame Worship', 'Flame Worship', 'special', false, 2),
   (3, '1:00 PM', '1 Hour', '1시간', 'Meal', '식사', 'Lunch', '점심', 'Flame Worship', 'Flame Worship', 'special', false, 3),
   (3, '4:00 PM', '1 Hour', '1시간', 'Sharing', '나눔', '1st Sharing', '1차 나눔', 'Flame Worship', 'Flame Worship', 'special', false, 4),
@@ -99,6 +99,6 @@ VALUES
 INSERT INTO public.schedule_sessions (day, time, duration_en, duration_ko, tag_en, tag_ko, title_en, title_ko, speaker_en, speaker_ko, track, live, sort_order)
 VALUES
   (4, '12:00 AM', '10 Hours', '온종일', 'Continuous Worship', '연속 예배', 'Flame 72-Hour Worship — Day 4', 'Flame 72시간 예배 4일차', 'Everyone together', '모두 함께', 'worship', true, 0),
-  (4, '5:00 AM', '1 Hour', '1시간', 'Meditation', '묵상', 'Communal Word Meditation', '공동말씀묵상', 'Flame Worship', 'Flame Worship', 'special', false, 1),
+  (4, '5:00 AM', '1 Hour', '1시간', 'Meditation', '묵상', 'Corporate Word Meditation', '공동말씀묵상', 'Flame Worship', 'Flame Worship', 'special', false, 1),
   (4, '7:00 AM', '1 Hour', '1시간', 'Meal', '식사', 'Breakfast', '아침', 'Flame Worship', 'Flame Worship', 'special', false, 2),
   (4, '8:00 AM', '2 Hours', '2시간', 'Closing Worship', '마무리 예배', 'Sending Worship', '파송 예배', 'Led by Janet', '인도: Janet', 'special', false, 3);
