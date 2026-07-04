@@ -61,13 +61,16 @@ export default function Home() {
             </span>
           </>
         }
-        subtitle={text(
-          {
-            en: "A sacred gathering to intercede for North Korea. Join us for 72 continuous hours of worship and prayer at the edge of the nation.",
-            ko: "북한을 위해 중보하는 거룩한 모임. 한반도의 끝에서 72시간 연속 예배와 기도에 함께하세요.",
-          },
-          lang,
-        )}
+        subtitle={
+          lang === "ko" ? (
+            <>
+              한반도의 회복과 열방을 위해 중보하는 거룩한 모임.<br className="hidden sm:inline" />
+              한반도의 끝에서 72시간 연속 예배와 기도에 함께하세요.
+            </>
+          ) : (
+            "A sacred gathering to intercede for the restoration of the Korean Peninsula and the Nations. Join us for 72 hours of unceasing worship and prayer at the edge of the nation."
+          )
+        }
       >
         <div className="flex flex-col sm:flex-row items-center gap-x-6 gap-y-2 text-on-surface-variant font-label-sm text-label-sm">
           <span className="inline-flex items-center gap-2">

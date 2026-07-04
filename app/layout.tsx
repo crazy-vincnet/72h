@@ -30,11 +30,11 @@ export const metadata: Metadata = {
     template: "%s | Flame Worship",
   },
   description:
-    "북한을 위해 중보하는 거룩한 모임 — 제주에서 72시간 연속 예배와 기도. 72 Hours of Prayer in Jeju.",
+    "한반도의 회복과 열방을 위해 중보하는 거룩한 모임 — 제주에서 72시간 연속 예배와 기도. 72 Hours of Prayer in Jeju.",
   openGraph: {
     title: "제주 72시간 기도 | Flame Worship",
     description:
-      "북한을 위해 중보하는 거룩한 모임 — 제주에서 72시간 연속 예배와 기도.",
+      "한반도의 회복과 열방을 위해 중보하는 거룩한 모임 — 제주에서 72시간 연속 예배와 기도.",
     url: "/",
     siteName: "Flame Worship",
     images: [{ url: "/images/jeju-dawn.png", alt: "Jeju Island at dawn" }],
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "제주 72시간 기도 | Flame Worship",
     description:
-      "북한을 위해 중보하는 거룩한 모임 — 제주에서 72시간 연속 예배와 기도.",
+      "한반도의 회복과 열방을 위해 중보하는 거룩한 모임 — 제주에서 72시간 연속 예배와 기도.",
     images: ["/images/jeju-dawn.png"],
   },
 };

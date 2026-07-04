@@ -27,22 +27,23 @@ export default function TopNav() {
   const registerLabel = text({ en: "Register Now", ko: "지금 등록하기" }, lang);
 
   return (
-    <nav
-      className={
-        "fixed top-0 w-full z-50 transition-all duration-300 ease-in-out backdrop-blur-xl " +
-        (scrolled
-          ? "bg-surface/90 border-b border-outline-variant/40 shadow-[0_4px_24px_rgba(59,9,0,0.06)]"
-          : "bg-surface/60 border-b border-transparent")
-      }
-    >
-      <div
+    <div className="fixed top-0 left-0 right-0 z-50 px-3 sm:px-4 pt-3 sm:pt-4 pointer-events-none">
+      <nav
         className={
-          "flex justify-between items-center px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto transition-all duration-300 " +
-          (scrolled ? "py-2.5" : "py-4")
+          "pointer-events-auto max-w-container-max mx-auto rounded-full border backdrop-blur-xl transition-all duration-300 ease-in-out " +
+          (scrolled
+            ? "bg-surface/90 border-outline-variant/50 shadow-[0_8px_30px_rgba(59,9,0,0.12)]"
+            : "bg-surface/70 border-outline-variant/25 shadow-[0_6px_24px_rgba(59,9,0,0.08)]")
         }
       >
+        <div
+          className={
+            "flex justify-between items-center px-4 sm:px-6 transition-all duration-300 " +
+            (scrolled ? "py-2" : "py-2.5")
+          }
+        >
         {/* Brand */}
-        <Link href="/" className="flex items-center gap-2.5 group">
+        <Link href="/" className="flex items-center gap-2.5 group shrink-0">
           <span className="grid place-items-center w-9 h-9 rounded-xl bg-gradient-to-br from-primary to-primary-container text-on-primary shadow-md shadow-primary/30 group-hover:scale-105 group-hover:rotate-3 transition-transform duration-300">
             <span
               className="material-symbols-outlined filled"
@@ -51,7 +52,7 @@ export default function TopNav() {
               local_fire_department
             </span>
           </span>
-          <span className="font-headline-md text-headline-md font-bold text-primary tracking-tight">
+          <span className="font-headline-md text-headline-md font-bold text-primary tracking-tight whitespace-nowrap">
             Flame Worship
           </span>
         </Link>
@@ -103,16 +104,19 @@ export default function TopNav() {
             </span>
           </button>
         </div>
-      </div>
+        </div>
+      </nav>
 
-      {/* Mobile drawer */}
+      {/* Mobile drawer — floating card below the pill */}
       <div
         className={
-          "md:hidden overflow-hidden transition-[max-height,opacity] duration-300 ease-in-out border-t border-outline-variant/30 bg-surface/95 backdrop-blur-xl " +
-          (open ? "max-h-96 opacity-100" : "max-h-0 opacity-0 border-transparent")
+          "pointer-events-auto md:hidden max-w-container-max mx-auto overflow-hidden rounded-2xl border backdrop-blur-xl transition-all duration-300 ease-in-out " +
+          (open
+            ? "mt-2 max-h-96 opacity-100 border-outline-variant/40 bg-surface/95 shadow-[0_8px_30px_rgba(59,9,0,0.12)]"
+            : "mt-0 max-h-0 opacity-0 border-transparent bg-transparent")
         }
       >
-        <div className="px-margin-mobile py-4 flex flex-col gap-1.5">
+        <div className="px-4 py-3 flex flex-col gap-1.5">
           {NAV_ITEMS.map((item) => (
             <Link
               key={item.href}
@@ -140,7 +144,7 @@ export default function TopNav() {
           </Link>
         </div>
       </div>
-    </nav>
+    </div>
   );
 }
 
