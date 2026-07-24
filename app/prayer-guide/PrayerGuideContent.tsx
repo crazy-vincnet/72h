@@ -44,51 +44,51 @@ export default function PrayerGuidePage() {
 
   const points = [
     {
-      en: "Pure Hearts & Presence",
-      ko: "순전한 마음과 하나님의 임재",
+      en: "For His presence and pure hearts",
+      ko: "순전한 마음과 하나님의 임재를 위해",
       desc: {
-        en: "Pray that God's presence will overflow through pure worship offered in spirit and truth.",
-        ko: "영과 진리로 주님께 드리는 순전한 예배를 통해 하나님의 임재가 충만하도록.",
+        en: "That His presence purifies our hearts, so that our worship and prayer are pure and acceptable and led by spirit and truth.",
+        ko: "영과 진리로 드리는 순전한 예배를 통해 하나님의 임재가 충만히 임하도록.",
       },
     },
     {
-      en: "Restoration",
-      ko: "회복",
+      en: "For restoration",
+      ko: "회복을 위해",
       desc: {
-        en: "Pray that individuals recover their identity as God's beloved, spreading that fire to the church community.",
-        ko: "하나님의 사랑받는 자 정체성의 회복이 개인에게 임하여 그 불길이 교회공동체까지 흘러가도록.",
+        en: "That the personal restoration of identity as a beloved child of God, leads to restoration in families, church communities, and the nations.",
+        ko: "하나님의 사랑받는 자녀라는 정체성이 각 사람 안에 회복되고, 그 회복의 불길이 가정과 교회공동체를 넘어 세상 가운데 번져가도록.",
       },
     },
     {
-      en: "Reunification",
-      ko: "한반도의 통일",
+      en: "For the Reunification",
+      ko: "한반도의 통일을 위해",
       desc: {
-        en: "Pray that the path to peaceful reunification of the Korean Peninsula opens up centered on the Gospel.",
-        ko: "복음을 중심으로 평화로운 한반도 통일의 길이 열리도록.",
+        en: "That churches would unite and the way will be paved for a gospel-centered, peaceful reunification of the Korean Peninsula.",
+        ko: "회복된 교회들이 연합되어 복음이 중심된 하나님의 방법으로 평화로운 한반도 통일의 길이 열리도록.",
       },
     },
     {
-      en: "The Nations",
-      ko: "열방",
+      en: "For the nations",
+      ko: "열방을 위해",
       desc: {
-        en: "Pray that the fire of the Gospel spreads beyond the Korean Peninsula and into the nations.",
-        ko: "한반도를 넘어 열방 가운데 복음의 불길이 일어나도록.",
+        en: "That the flame of the gospel would arise beyond the Korean Peninsula and that people would rise to prepare the way for the return of Jesus Christ.",
+        ko: "한반도를 넘어 열방 가운데 복음의 불길이 일어나고, 예수 그리스도의 다시 오실 길을 예비하는 자들이 일어나도록.",
       },
     },
     {
-      en: "The Next Generation",
-      ko: "다음 세대",
+      en: "For the next generation",
+      ko: "다음 세대를 위해",
       desc: {
-        en: "Pray that a holy fire rises among the next generation of worshippers and intercessors raised by God.",
-        ko: "하나님이 일으키시는 다음 세대 예배자들과 중보자들 가운데 거룩한 불길이 일어나도록.",
+        en: "That this will spark a flame in a new generation of worship and intercession.",
+        ko: "믿음의 유업을 이어받을 다음 세대를 일으키시고, 그 가운데 거룩한 예배와 중보의 불이 타오르도록.",
       },
     },
     {
-      en: "Provision",
-      ko: "재정의 공급",
+      en: "For God's provision",
+      ko: "하나님의 공급을 위해",
       desc: {
-        en: "Pray that all financial resources needed for this assembly are fully and abundantly provided.",
-        ko: "이번 집회에 필요한 모든 재정이 온전히 채워지도록",
+        en: "A total of 16 million KRW (approximately $11,000 USD) is needed for the venue, sound, operations, media, and other needs for this worship gathering. Please pray with us, as we trust in Jehovah Jireh, the God who provides all we need, and ask that His abundant grace be poured out upon us.",
+        ko: "이번 예배를 위해 장소, 음향, 운영, 미디어 등 총 1,600만원의 재정이 필요합니다. 예배를 위해 필요한 모든 것을 공급하시는 여호와 이레 하나님을 신뢰하며, 그 은혜를 풍성히 누릴 수 있도록.",
       },
     },
   ];
@@ -149,9 +149,9 @@ export default function PrayerGuidePage() {
         </div>
       </section>
 
-      {/* Specific points + downloads */}
-      <section className="py-stack-lg grid grid-cols-1 lg:grid-cols-12 gap-gutter items-start px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
-        <div className="lg:col-span-8 bg-surface-container-lowest p-8 md:p-12 rounded-xl card-shadow">
+      {/* Specific points */}
+      <section className="py-stack-lg px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+        <div className="bg-surface-container-lowest p-8 md:p-12 rounded-xl card-shadow">
           <h2 className="font-headline-md text-headline-md text-on-surface mb-6">
             {text(
               { en: "Specific Intercession Points", ko: "구체적인 중보 제목" },
@@ -174,49 +174,6 @@ export default function PrayerGuidePage() {
                 </div>
               </div>
             ))}
-          </div>
-        </div>
-
-        {/* Downloads */}
-        <div className="lg:col-span-4 bg-primary text-on-primary p-8 rounded-xl card-shadow flex flex-col items-center text-center justify-center h-full min-h-[300px]">
-          <span className="material-symbols-outlined mb-4" style={{ fontSize: 36 }}>
-            description
-          </span>
-          <h2 className="font-headline-md text-headline-md text-on-primary mb-2">
-            {text({ en: "Resource Center", ko: "자료 센터" }, lang)}
-          </h2>
-          <p className="font-body-md text-body-md text-on-primary/80 mb-8 text-sm">
-            {text(
-              {
-                en: "Download comprehensive guides and media assets for your prayer groups.",
-                ko: "기도 모임을 위한 종합 가이드와 미디어 자료를 다운로드하세요.",
-              },
-              lang,
-            )}
-          </p>
-          <div className="w-full space-y-3">
-            <button
-              disabled
-              title={text({ en: "Coming soon", ko: "준비 중" }, lang)}
-              className="w-full flex items-center justify-center gap-2 bg-on-primary/60 text-primary/70 font-label-sm text-label-sm py-3 px-4 rounded-lg cursor-not-allowed"
-            >
-              <span className="material-symbols-outlined">download</span>
-              {text({ en: "Full Guide (PDF)", ko: "전체 가이드 (PDF)" }, lang)}
-              <span className="text-[10px] uppercase tracking-wide opacity-80">
-                {text({ en: "Soon", ko: "준비 중" }, lang)}
-              </span>
-            </button>
-            <button
-              disabled
-              title={text({ en: "Coming soon", ko: "준비 중" }, lang)}
-              className="w-full flex items-center justify-center gap-2 border border-on-primary/20 text-on-primary/60 font-label-sm text-label-sm py-3 px-4 rounded-lg cursor-not-allowed"
-            >
-              <span className="material-symbols-outlined">image</span>
-              {text({ en: "Media Kit", ko: "미디어 키트" }, lang)}
-              <span className="text-[10px] uppercase tracking-wide opacity-80">
-                {text({ en: "Soon", ko: "준비 중" }, lang)}
-              </span>
-            </button>
           </div>
         </div>
       </section>

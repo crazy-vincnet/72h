@@ -189,6 +189,45 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Worshipper registration section */}
+      <section className="bg-surface-container-low py-stack-lg px-margin-mobile md:px-margin-desktop">
+        <div className="max-w-container-max mx-auto bg-surface-container-lowest rounded-3xl p-8 md:p-12 border border-outline-variant/30 shadow-lg shadow-primary/5 relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-8">
+          <div className="absolute inset-0 bg-gradient-to-tr from-primary/5 via-transparent to-transparent pointer-events-none" />
+          
+          <div className="relative z-10 flex-1 space-y-4 text-center md:text-left">
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full font-label-sm text-[11px] font-bold bg-primary/10 text-primary border border-primary/20 uppercase tracking-wider">
+              {text({ en: "Registration", ko: "등록" }, lang)}
+            </span>
+            <h2 className="font-headline-md text-headline-md text-on-surface tracking-tight leading-tight">
+              {text({ en: "Worshipper Registration", ko: "예배자 등록 안내" }, lang)}
+            </h2>
+            <p className="font-body-md text-body-md text-on-surface-variant max-w-xl">
+              {text(
+                {
+                  en: "Register to join us in person as a worshipper. Click the button to submit your registration form.",
+                  ko: "제주 집회에 현장 예배자로 참석하여 함께 기도의 불꽃을 피워내실 분들은 아래 신청 버튼을 통해 등록해주세요.",
+                },
+                lang,
+              )}
+            </p>
+          </div>
+
+          <div className="relative z-10 flex-shrink-0">
+            <a
+              href="https://docs.google.com/spreadsheets/d/1lBCwFgo1jMAI_FsudcI_lMgxpZDrLJ2Xeg8FH2z6D10/edit?gid=659576954#gid=659576954"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 bg-primary text-on-primary px-8 py-4 rounded-full font-label-sm text-sm font-bold shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/30 hover:-translate-y-0.5 transition-all duration-300"
+            >
+              <span className="material-symbols-outlined text-[18px] leading-none" style={{ fontSize: 18 }}>
+                how_to_reg
+              </span>
+              {text({ en: "Register Now", ko: "지금 신청하기" }, lang)}
+            </a>
+          </div>
+        </div>
+      </section>
+
       {/* Quick links */}
       <section className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop pb-stack-lg">
         <h3 className="font-headline-md text-headline-md text-on-surface mb-8 text-center">
